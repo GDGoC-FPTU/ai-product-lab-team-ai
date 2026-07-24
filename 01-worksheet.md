@@ -23,7 +23,7 @@ Trong buổi Lab hôm nay, nhóm của bạn sẽ đóng vai trò là **AI Produ
 
 | Gate | Điểm | Deliverable | Tiêu chí chấm |
 |---|---:|---|---|
-| **G1. Workflow Mapping** | 20 | Problem Deep-Dive | Vẽ chi tiết quy trình hiện tại: các bước, handoff, thời gian, bottleneck |
+| **G1. Workflow Mapping** | 20 | Problem Deep-Dive | Vẽ chi tiết quy trình hiện tại: các bước, handoff, thời gian, bottlebây giờ bọn tôin làm việc nhóm và yêu cầu nằm trong file .md và nhóm tôi có 6 người thì hãy giúp chúng tôi phân chia công việcneck |
 | **G2. Problem Statement** | 20 | Problem Deep-Dive | Problem Statement 6-field bám sát thực tế, metric có số và ranh giới rõ ràng |
 | **G3. AI Fit & Future Flow** | 10 | Problem Deep-Dive | So sánh Rule vs LLM vs Agent, future flow có bước AI, ranh giới và Fallback |
 | **G4. Decision Quality** | 10 | Problem Deep-Dive | Quyết định Go/Not Yet/No-Go trung thực và có chứng cứ rõ ràng |
