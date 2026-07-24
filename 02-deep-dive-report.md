@@ -7,6 +7,14 @@
 
 ---
 
+**Họ và tên thành viên trong nhóm**
+1. Hồ Văn Thi
+2. Nguyễn Gia Thiều
+3. Lê Nguyễn Phi Trường
+4. Nguyễn Quốc Thịnh
+5. Trần Duy Trường
+6. Nguyễn Hoàng Minh
+
 # 🏗️ Phase 3 — DEEP-DIVE: Phân tích sâu & Đề xuất giải pháp
 
 ## 3.1. Current-State Workflow Mapping
