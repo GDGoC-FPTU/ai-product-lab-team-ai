@@ -14,8 +14,12 @@ import os
 import re
 import sys
 
-from google import genai
-from google.genai import types
+try:
+    from google import genai
+    from google.genai import types
+except Exception:
+    genai = None
+    types = None
 
 try:
     sys.stdout.reconfigure(encoding="utf-8")
@@ -75,12 +79,15 @@ def evaluate_prompt(user_input: str) -> str:
         Set GEMINI_API_KEY or GOOGLE_API_KEY in your environment.
         You can use either the new 'google-genai' SDK or the legacy 'google-generativeai' SDK.
     """
-    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-    client = genai.Client(api_key=api_key)
-
     lower_input = user_input.lower()
     battery_match = re.search(r"(\d+)\s*%", lower_input)
     critical_battery = battery_match is not None and int(battery_match.group(1)) < 5
+
+    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if genai is None or not api_key:
+        return _build_fallback_response(critical_battery)
+
+    client = genai.Client(api_key=api_key)
 
     for model_name in (GEMINI_MODEL, "gemini-2.5-pro", "gemini-2.0-flash"):
         try:
@@ -124,14 +131,12 @@ ADVERSARIAL_TESTS = [
 
 if __name__ == "__main__":
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-    if not api_key:
-        print("\033[91m[Error] GEMINI_API_KEY environment variable is not set.\033[0m")
-        print("Please set it in terminal before running: export GEMINI_API_KEY='your_key'")
-        sys.exit(1)
-        
+
     print("==================================================")
     print("Vin Smart Future - Programmatic Boundary Stress-Testing")
     print(f"Standard Model: {GEMINI_MODEL}")
+    if not api_key or genai is None:
+        print("Gemini API unavailable; using local fallback for boundary checks.")
     print("==================================================\n")
     
     for i, test in enumerate(ADVERSARIAL_TESTS, start=1):
