@@ -63,11 +63,11 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 ### 📝 List bài toán của tôi:
 | # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
 |---|----------------------------------|------|---------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| 1 | VinFast| Repetitive| AI tự động phân loại và xử lý các ticket bảo hành xe dựa trên mô tả lỗi, giảm công việc phân loại thủ công của nhân viên CSKH.|
+| 2 | Xanh SM| Stakeholder Pain| AI tối ưu gợi ý điểm đón/trả khách dựa trên dữ liệu giao thông, lịch sử chuyến đi và vị trí thực tế để giảm việc tài xế phải gọi điện xác nhận.|
+| 3 | Vinhomes| Time-consuming| AI hỗ trợ ban quản lý soạn thảo phản hồi cho các phản ánh của cư dân (tiếng ồn, vệ sinh, bãi đỗ xe...), sau đó nhân viên chỉ cần rà soát và gửi.|
+| 4 | Vinmec | AI-upgrade| AI Assistant hỗ trợ người bệnh đặt lịch khám, giải đáp câu hỏi về chuyên khoa, chuẩn bị trước khi khám và hướng dẫn sau khám 24/7 thay vì chatbot theo kịch bản cố định. |
+| 5 | Vincom Retail| Repetitive| AI tự động tổng hợp dữ liệu doanh thu, lượng khách và sự cố vận hành từ nhiều cửa hàng để tạo báo cáo hằng ngày cho ban quản lý.|
 
 ---
 
@@ -77,25 +77,69 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #___                                     │
+│ QUICK PROBLEM CARD #1                                     │
 │                                                             │
-│ Bài toán (1 câu): ________________________________________  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│ Bài toán (1 câu): Tự động phân loại và xử lý ticket bảo hành xe dựa trên mô tả lỗi từ khách hàng.   │
+│ Công ty thành viên: [x] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
 │                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? ______________________________________ │
+│ Ai đang đau (Actor)? Nhân viên CSKH và kỹ sư bảo hành VinFast. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. ___ ──> 2. ___ ──> 3. ___ ──> 4. ___                   │
+│   1. Nhân viên nhận ticket lỗi xe ──> 2. Đọc và hiểu mô tả khách   │
+│   3. Phân loại vấn đề, gắn nhãn lỗi, chuyển sang đội kỹ thuật   │
+│   4. Ghi chú hướng xử lý / trả lời khách hàng                │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? ___ (⏱ ___ phút/lượt)      │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? _____________________ │
+│ Bước nào tốn thời gian/lỗi nhất? Đọc và phân loại mô tả lỗi thủ công (⏱ 5-7 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Phân loại lỗi tự động và gợi ý hướng xử lý ban đầu. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)? ______________________ │
-│   VD: "Giảm thời gian soạn phản hồi từ 10 min ──> under 2 min"│
-│                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [ ] Agent │
+│ Đo thành công bằng gì (Metric có số)? 80% ticket phân loại đúng trong <30s và giảm thời gian xử lý 50%. │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
 └─────────────────────────────────────────────────────────────┘
+```
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #2                                     │
+│                                                             │
+│ Bài toán (1 câu): AI tối ưu gợi ý điểm đón/trả khách cho tài xế Xanh SM dựa trên dữ liệu giao thông và lịch sử chuyến đi. │
+│ Công ty thành viên: [ ] VinFast  [x] Xanh SM  [ ] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
+│                                                             │
+│ Ai đang đau (Actor)? Tài xế điều phối và dispatcher Xanh SM. │
+│                                                             │
+│ Workflow thủ công hiện tại (3-5 bước):                      │
+│   1. Dispatcher nhận yêu cầu đón khách ──> 2. Kiểm tra bản đồ và lịch sử   │
+│   3. Gợi ý điểm đón/trả sơ bộ ──> 4. Gọi điện xác nhận hoặc chỉnh sửa    │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Gợi ý điểm đón/trả chính xác đúng địa hình và giao thông (⏱ 3-5 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Đề xuất điểm đón/trả tối ưu tự động kèm lý do. │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Giảm 30% số lần gọi xác nhận lại và tăng 20% tỷ lệ điểm đón chính xác lần đầu. │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #3                                     │
+│                                                             │
+│ Bài toán (1 câu): AI hỗ trợ soạn thảo phản hồi cho các phản ánh cư dân Vinhomes, rồi nhân viên chỉ cần rà soát và gửi. │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
+│                                                             │
+│ Ai đang đau (Actor)? Nhân viên ban quản lý tòa nhà và bộ phận CSKH Vinhomes. │
+│                                                             │
+│ Workflow thủ công hiện tại (3-5 bước):                      │
+│   1. Nhận phản ánh cư dân qua email/ứng dụng ──> 2. Đọc nội dung và xác định chủ đề  │
+│   3. Soạn trả lời thủ công ──> 4. Đánh giá và gửi phản hồi cho cư dân   │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Soạn nội dung trả lời chuẩn xác và phù hợp với tone công ty (⏱ 8-10 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Tạo bản nháp phản hồi phù hợp, rõ ràng, và đề xuất hành động tiếp theo. │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Rút ngắn thời gian soạn phản hồi từ 10 phút xuống còn dưới 3 phút và đạt 90% tỷ lệ phản hồi hợp lý. │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────┘
 ```
 
 > [!TIP]

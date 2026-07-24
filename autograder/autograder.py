@@ -15,15 +15,25 @@ if sys.stdout.encoding != 'utf-8':
         pass
 
 def find_student_file():
-    """Tìm đường dẫn file prompt_prototype.py ở các thư mục phổ biến."""
+    """Tìm đường dẫn file prompt_prototype.py ở các thư mục phổ biến.
+
+    Hỗ trợ cả trường hợp chạy autograder từ root repository hoặc từ thư mục ai-product-lab-team-ai.
+    """
     possible_paths = [
         "extras/prompt_prototype.py",
         "starter-code/prompt_prototype.py",
-        "prompt_prototype.py"
+        "prompt_prototype.py",
+        os.path.join("ai-product-lab-team-ai", "starter-code", "prompt_prototype.py"),
+        os.path.join("ai-product-lab-team-ai", "prompt_prototype.py")
     ]
     for path in possible_paths:
         if os.path.exists(path):
             return path
+
+    for root, _, files in os.walk("."):
+        if "prompt_prototype.py" in files:
+            return os.path.join(root, "prompt_prototype.py")
+
     return None
 
 def get_student_module_or_exit():
