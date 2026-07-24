@@ -11,13 +11,13 @@ Hãy sử dụng 4 lenses để quét qua hoạt động vận hành của các 
 4. **Pain từ người khác (Stakeholder Pain):** Bottleneck khiến khách hàng hoặc nhân viên thực địa phàn nàn.
 
 ### 📝 Bảng quét cơ hội của tôi:
-| # | Subsidiary (VinFast/Xanh SM...)  | Lens                    | Mô tả ngắn bài toán |
-|---|----------------------------------|-------------------------|---------------------|
-| 1 |      vinmec                      |   RAG (Generative AI)   |     Trợ lý ảo tìm kiếm và truy xuất nhanh phác đồ điều trị, hướng dẫn nội bộ (SOP) cho đội ngũ y bác sĩ.              |
-| 2 |  vinmec                          | Computer Vision & LLMs  | Tự động hóa trích xuất và số hóa dữ liệu hồ sơ bệnh án, đơn thuốc ngoại viện vào hệ thống nội bộ.                       |
-| 3 |  vinmec                          | NLP (Phân loại văn bản) | Đọc hiểu hồ sơ lâm sàng và tự động gán mã bệnh tật (ICD-10/11) để xử lý thanh toán bảo hiểm.                         |
-| 4 |  vinmec                          | Predictive Analytics    | Dự đoán tỷ lệ hủy lịch(no-shows) và điều phối bệnh nhân tự động để tối ưu công suất bác sĩ và thiết bị (MRI, CT).       |
-| 5 |  vinmec                          | Time-Series Forecasting | Phân tích chuỗi thời gian để dự báo nhu cầu vật tư y tế, tối ưu tồn kho và giảm lượng thuốc hết hạn.                   |
+| # | Subsidiary | Lens | Mô tả ngắn bài toán |
+|---|------------|------|---------------------|
+| 1 | VinFast | Repetitive | AI tự động phân loại và xử lý ticket bảo hành xe dựa trên mô tả lỗi, giảm công việc phân loại thủ công của nhân viên CSKH.
+| 2 | Xanh SM | Stakeholder Pain | AI tối ưu gợi ý điểm đón/trả khách dựa trên dữ liệu giao thông, lịch sử chuyến đi và vị trí thực tế, giảm tình trạng tài xế phải gọi điện xác nhận nhiều lần.
+| 3 | Vinhomes | Time-consuming | AI hỗ trợ ban quản lý soạn thảo phản hồi cho các phản ánh cư dân (tiếng ồn, vệ sinh, bãi đỗ xe…), rồi nhân viên chỉ cần rà soát và gửi.
+| 4 | Vinmec | AI-upgrade | AI Assistant hỗ trợ người bệnh đặt lịch khám, giải đáp câu hỏi về chuyên khoa, chuẩn bị trước khi khám và hướng dẫn sau khám 24/7 thay vì chatbot theo kịch bản cố định.
+| 5 | Vincom Retail | Repetitive | AI tự động tổng hợp dữ liệu doanh thu, lượng khách và sự cố vận hành từ nhiều cửa hàng để tạo báo cáo hằng ngày cho ban quản lý.
 
 ---
 
@@ -27,76 +27,67 @@ Chọn top 3 bài toán từ bảng trên và hoàn thiện 3 Quick Problem Card
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #1                                       │
+│ QUICK PROBLEM CARD #1                                     │
 │                                                             │
-│ Bài toán (1 câu): Số hóa tự động hồ sơ bệnh án ngoại viện.  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
+│ Bài toán (1 câu): Tự động phân loại và xử lý ticket bảo hành xe dựa trên mô tả lỗi từ khách hàng.   │
+│ Công ty thành viên: [x] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? Bác sĩ, Điều dưỡng, Lễ tân phòng khám. │
+│ Ai đang đau (Actor)? Nhân viên CSKH và kỹ sư bảo hành VinFast. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. Nhận bản scan ──> 2. Đọc thủ công ──> 3. Nhập dữ liệu  │
-│   vào hệ thống EMR ──> 4. Kiểm tra chéo lỗi chính tả.       │
+│   1. Nhận ticket lỗi xe từ khách hàng ──> 2. Đọc thông tin mô tả  │
+│   3. Phân loại vấn đề và gắn nhãn lỗi ──> 4. Chuyển ticket đến đội kỹ thuật │
+│   5. Soạn ghi chú hướng xử lý và trả lời khách hàng          │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3 (⏱ 10-15 phút/lượt) │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2 & 3 (Dùng một  │
-│ hệ thống dịch thuật từ hình ảnh sang văn bản nhận thức ngữ  │
-│ cảnh kết hợp Computer Vision và LLM để tự động điền form).  │
+│ Bước nào tốn thời gian/lỗi nhất? Đọc mô tả và phân loại lỗi thủ công (⏱ 5-7 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Phân loại lỗi tự động và gợi ý hướng xử lý ban đầu. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│   Giảm thời gian nhập liệu từ 15 min ──> under 2 min/hồ sơ. │
-│                                                             │
+│ Đo thành công bằng gì (Metric có số)? 80% ticket phân loại đúng trong <30s và giảm thời gian xử lý 50%. │
 │ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
-└─────────────────────────────────────────────────────────────┘
+└─────────────────────────────────────────────┘
 ```
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #2                                       │
+│ QUICK PROBLEM CARD #2                                     │
 │                                                             │
-│ Bài toán (1 câu): Tự động gán mã bệnh tật ICD-10/11 cho HSBA│
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
+│ Bài toán (1 câu): AI tối ưu gợi ý điểm đón/trả khách cho tài xế Xanh SM dựa trên dữ liệu giao thông và lịch sử chuyến đi. │
+│ Công ty thành viên: [ ] VinFast  [x] Xanh SM  [ ] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? Nhân viên Coding y khoa, Kế toán BHYT. │
+│ Ai đang đau (Actor)? Tài xế điều phối và dispatcher Xanh SM. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. Đọc hồ sơ ra viện ──> 2. Tra cứu mã ICD thủ công ──>   │
-│   3. Gán mã vào hệ thống ──> 4. Làm hồ sơ gửi bảo hiểm.     │
+│   1. Dispatcher nhận yêu cầu đón khách ──> 2. Kiểm tra bản đồ và lịch sử chuyến đi  │
+│   3. Đề xuất điểm đón/trả sơ bộ ──> 4. Gọi điện xác nhận hoặc chỉnh sửa đề xuất │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 2 (⏱ 20-30 phút/lượt) │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2 (Đọc tóm tắt   │
-│ lâm sàng và tự động đề xuất Top 3 mã ICD chuẩn xác nhất).   │
+│ Bước nào tốn thời gian/lỗi nhất? Gợi ý điểm đón/trả phù hợp thực tế và giao thông (⏱ 3-5 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Đề xuất điểm đón/trả tối ưu tự động kèm lý do và tính toán mức độ thuận tiện. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│   Giảm tỷ lệ từ chối bồi thường BHYT từ 15% ──> under 5%.   │
-│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Giảm 30% số lần gọi xác nhận lại và tăng 20% tỷ lệ điểm đón đúng lần đầu. │
 │ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
-└─────────────────────────────────────────────────────────────┘
+└─────────────────────────────────────────────┘
 ```
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #3                                       │
+│ QUICK PROBLEM CARD #3                                     │
 │                                                             │
-│ Bài toán (1 câu): Trợ lý RAG tra cứu nhanh phác đồ nội bộ.  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
+│ Bài toán (1 câu): AI hỗ trợ soạn thảo phản hồi cho các phản ánh cư dân Vinhomes, rồi nhân viên chỉ cần rà soát và gửi. │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? Bác sĩ điều trị, Dược sĩ lâm sàng.     │
+│ Ai đang đau (Actor)? Nhân viên ban quản lý tòa nhà và bộ phận CSKH Vinhomes. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. Có ca bệnh khó ──> 2. Mở kho SOP PDF ──> 3. Dùng Ctrl+F│
-│   tìm keyword ──> 4. Đọc chắt lọc từ hàng chục trang text.  │
+│   1. Nhận phản ánh cư dân qua email/ứng dụng ──> 2. Đọc nội dung và xác định chủ đề  │
+│   3. Soạn trả lời thủ công ──> 4. Đánh giá và gửi phản hồi cho cư dân   │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 4 (⏱ 30-45 phút/lượt) │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3 & 4 (Hỏi đáp   │
-│ ngữ nghĩa, truy xuất trích dẫn đúng đoạn văn bản cần tìm).  │
+│ Bước nào tốn thời gian/lỗi nhất? Soạn nội dung trả lời phù hợp tone công ty và đủ chi tiết (⏱ 8-10 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Tạo bản nháp phản hồi phù hợp, rõ ràng, và đề xuất hành động tiếp theo. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│   Giảm thời gian tra cứu phác đồ từ 30 min ──> under 1 min. │
-│                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [x] Agent │
-└─────────────────────────────────────────────────────────────┘
+│ Đo thành công bằng gì (Metric có số)? Rút ngắn thời gian soạn phản hồi từ 10 phút xuống còn dưới 3 phút và đạt 90% tỷ lệ phản hồi hợp lý. │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────┘
 ```

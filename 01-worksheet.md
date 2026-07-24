@@ -4,7 +4,7 @@
 
 ## 🏛️ 1. Bối cảnh thực tế: Vin Smart Future (Vingroup)
 
-**Vingroup** — pTậ đoàn tư nhân lớn nhất Việt Nam — vừa sáp nhập toàn bộ các phòng ban công nghệ thuộc các công ty thành viên thành một đơn vị công nghệ thống nhất mang tên **Vin Smart Future**. 
+**Vingroup** — Tập đoàn tư nhân lớn nhất Việt Nam — vừa sáp nhập toàn bộ các phòng ban công nghệ thuộc các công ty thành viên thành một đơn vị công nghệ thống nhất mang tên **Vin Smart Future**. 
 
 Nhiệm vụ của **Vin Smart Future** là xây dựng các giải pháp AI, số hóa, và tự động hóa cốt lõi để nâng cao hiệu suất vận hành và trải nghiệm khách hàng xuyên suốt các công ty thành viên:
 * 🚗 **VinFast:** Hệ thống xe điện thông minh (EV), trợ lý AI ảo trong xe, dự đoán bảo trì pin, và quản lý chuỗi cung ứng sản xuất.
@@ -61,13 +61,13 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 > *"Tôi là AI Engineer tại Vin Smart Future (Vingroup). Tôi đang tìm kiếm các pain point vận hành cụ thể có thể tối ưu bằng AI cho mảng [Chọn một: VinFast / Xanh SM / Vinhomes / Vinmec]. Hãy gợi ý cho tôi 5 quy trình nghiệp vụ thủ công, tốn nhiều thời gian và gây rò rỉ hiệu suất kèm con số thống kê ước tính về tổn thất."*
 
 ### 📝 List bài toán của tôi:
-| # | Subsidiary (VinFast/Xanh SM...)  | Lens                    | Mô tả ngắn bài toán |
-|---|----------------------------------|----------------|---------------------         |
-| 1 |      vinmec                      |   RAG (Generative AI)   |     Trợ lý ảo tìm kiếm và truy xuất nhanh phác đồ điều trị, hướng dẫn nội bộ (SOP) cho đội ngũ y bác sĩ.              |
-| 2 |  vinmec                          | Computer Vision & LLMs  | Tự động hóa trích xuất và số hóa dữ liệu hồ sơ bệnh án, đơn thuốc ngoại viện vào hệ thống nội bộ.                       |
-| 3 |  vinmec                          | NLP (Phân loại văn bản) | Đọc hiểu hồ sơ lâm sàng và tự động gán mã bệnh tật (ICD-10/11) để xử lý thanh toán bảo hiểm.                         |
-| 4 |  vinmec                          | Predictive Analytics    | Dự đoán tỷ lệ hủy lịch(no-shows) và điều phối bệnh nhân tự động để tối ưu công suất bác sĩ và thiết bị (MRI, CT).       |
-| 5 |  vinmec                          | Time-Series Forecasting | Phân tích chuỗi thời gian để dự báo nhu cầu vật tư y tế, tối ưu tồn kho và giảm lượng thuốc hết hạn.                   |
+| # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
+|---|----------------------------------|------|---------------------|
+| 1 | VinFast| Repetitive| AI tự động phân loại và xử lý các ticket bảo hành xe dựa trên mô tả lỗi, giảm công việc phân loại thủ công của nhân viên CSKH.|
+| 2 | Xanh SM| Stakeholder Pain| AI tối ưu gợi ý điểm đón/trả khách dựa trên dữ liệu giao thông, lịch sử chuyến đi và vị trí thực tế để giảm việc tài xế phải gọi điện xác nhận.|
+| 3 | Vinhomes| Time-consuming| AI hỗ trợ ban quản lý soạn thảo phản hồi cho các phản ánh của cư dân (tiếng ồn, vệ sinh, bãi đỗ xe...), sau đó nhân viên chỉ cần rà soát và gửi.|
+| 4 | Vinmec | AI-upgrade| AI Assistant hỗ trợ người bệnh đặt lịch khám, giải đáp câu hỏi về chuyên khoa, chuẩn bị trước khi khám và hướng dẫn sau khám 24/7 thay vì chatbot theo kịch bản cố định. |
+| 5 | Vincom Retail| Repetitive| AI tự động tổng hợp dữ liệu doanh thu, lượng khách và sự cố vận hành từ nhiều cửa hàng để tạo báo cáo hằng ngày cho ban quản lý.|
 
 ---
 
@@ -77,101 +77,75 @@ Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Pr
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #___                                     │
+│ QUICK PROBLEM CARD #1                                     │
 │                                                             │
-│ Bài toán (1 câu): ________________________________________  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│ Bài toán (1 câu): Tự động phân loại và xử lý ticket bảo hành xe dựa trên mô tả lỗi từ khách hàng.   │
+│ Công ty thành viên: [x] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
 │                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? ______________________________________ │
+│ Ai đang đau (Actor)? Nhân viên CSKH và kỹ sư bảo hành VinFast. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. ___ ──> 2. ___ ──> 3. ___ ──> 4. ___                   │
+│   1. Nhân viên nhận ticket lỗi xe ──> 2. Đọc và hiểu mô tả khách   │
+│   3. Phân loại vấn đề, gắn nhãn lỗi, chuyển sang đội kỹ thuật   │
+│   4. Ghi chú hướng xử lý / trả lời khách hàng                │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? ___ (⏱ ___ phút/lượt)      │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? _____________________ │
+│ Bước nào tốn thời gian/lỗi nhất? Đọc và phân loại mô tả lỗi thủ công (⏱ 5-7 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Phân loại lỗi tự động và gợi ý hướng xử lý ban đầu. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)? ______________________ │
-│   VD: "Giảm thời gian soạn phản hồi từ 10 min ──> under 2 min"│
-│                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [ ] Agent │
+│ Đo thành công bằng gì (Metric có số)? 80% ticket phân loại đúng trong <30s và giảm thời gian xử lý 50%. │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #1                                       │
+│ QUICK PROBLEM CARD #2                                     │
 │                                                             │
-│ Bài toán (1 câu): Số hóa tự động hồ sơ bệnh án ngoại viện.  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
+│ Bài toán (1 câu): AI tối ưu gợi ý điểm đón/trả khách cho tài xế Xanh SM dựa trên dữ liệu giao thông và lịch sử chuyến đi. │
+│ Công ty thành viên: [ ] VinFast  [x] Xanh SM  [ ] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? Bác sĩ, Điều dưỡng, Lễ tân phòng khám. │
+│ Ai đang đau (Actor)? Tài xế điều phối và dispatcher Xanh SM. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. Nhận bản scan ──> 2. Đọc thủ công ──> 3. Nhập dữ liệu  │
-│   vào hệ thống EMR ──> 4. Kiểm tra chéo lỗi chính tả.       │
+│   1. Dispatcher nhận yêu cầu đón khách ──> 2. Kiểm tra bản đồ và lịch sử   │
+│   3. Gợi ý điểm đón/trả sơ bộ ──> 4. Gọi điện xác nhận hoặc chỉnh sửa    │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 3 (⏱ 10-15 phút/lượt) │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2 & 3 (Dùng một  │
-│ hệ thống dịch thuật từ hình ảnh sang văn bản nhận thức ngữ  │
-│ cảnh kết hợp Computer Vision và LLM để tự động điền form).  │
+│ Bước nào tốn thời gian/lỗi nhất? Gợi ý điểm đón/trả chính xác đúng địa hình và giao thông (⏱ 3-5 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Đề xuất điểm đón/trả tối ưu tự động kèm lý do. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│   Giảm thời gian nhập liệu từ 15 min ──> under 2 min/hồ sơ. │
-│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Giảm 30% số lần gọi xác nhận lại và tăng 20% tỷ lệ điểm đón chính xác lần đầu. │
 │ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
 └─────────────────────────────────────────────────────────────┘
+```
 
+```
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #2                                       │
+│ QUICK PROBLEM CARD #3                                     │
 │                                                             │
-│ Bài toán (1 câu): Tự động gán mã bệnh tật ICD-10/11 cho HSBA│
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
+│ Bài toán (1 câu): AI hỗ trợ soạn thảo phản hồi cho các phản ánh cư dân Vinhomes, rồi nhân viên chỉ cần rà soát và gửi. │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? Nhân viên Coding y khoa, Kế toán BHYT. │
+│ Ai đang đau (Actor)? Nhân viên ban quản lý tòa nhà và bộ phận CSKH Vinhomes. │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. Đọc hồ sơ ra viện ──> 2. Tra cứu mã ICD thủ công ──>   │
-│   3. Gán mã vào hệ thống ──> 4. Làm hồ sơ gửi bảo hiểm.     │
+│   1. Nhận phản ánh cư dân qua email/ứng dụng ──> 2. Đọc nội dung và xác định chủ đề  │
+│   3. Soạn trả lời thủ công ──> 4. Đánh giá và gửi phản hồi cho cư dân   │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 2 (⏱ 20-30 phút/lượt) │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2 (Đọc tóm tắt   │
-│ lâm sàng và tự động đề xuất Top 3 mã ICD chuẩn xác nhất).   │
+│ Bước nào tốn thời gian/lỗi nhất? Soạn nội dung trả lời chuẩn xác và phù hợp với tone công ty (⏱ 8-10 phút/lượt). │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Tạo bản nháp phản hồi phù hợp, rõ ràng, và đề xuất hành động tiếp theo. │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│   Giảm tỷ lệ từ chối bồi thường BHYT từ 15% ──> under 5%.   │
-│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Rút ngắn thời gian soạn phản hồi từ 10 phút xuống còn dưới 3 phút và đạt 90% tỷ lệ phản hồi hợp lý. │
 │ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
-└─────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #3                                       │
-│                                                             │
-│ Bài toán (1 câu): Trợ lý RAG tra cứu nhanh phác đồ nội bộ.  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
-│                                                             │
-│ Ai đang đau (Actor)? Bác sĩ điều trị, Dược sĩ lâm sàng.     │
-│                                                             │
-│ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. Có ca bệnh khó ──> 2. Mở kho SOP PDF ──> 3. Dùng Ctrl+F│
-│   tìm keyword ──> 4. Đọc chắt lọc từ hàng chục trang text.  │
-│                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? Bước 4 (⏱ 30-45 phút/lượt) │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3 & 4 (Hỏi đáp   │
-│ ngữ nghĩa, truy xuất trích dẫn đúng đoạn văn bản cần tìm).  │
-│                                                             │
-│ Đo thành công bằng gì (Metric có số)?                       │
-│   Giảm thời gian tra cứu phác đồ từ 30 min ──> under 1 min. │
-│                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [x] Agent │
-└─────────────────────────────────────────────────────────────┘
+└─────────────────────────────────────────────┘
+```
 
 > [!TIP]
 > **🤖 AI Prompts — Stress-Test thẻ bài toán:**
 > Hãy dán nội dung thẻ bài toán của bạn vào LLM để nhận phản biện:
 > *"Đây là một thẻ bài toán vận hành tôi đề xuất cho Vin Smart Future: [Dán nội dung]. Hãy đóng vai trò là một CFO và Trưởng phòng Vận hành cực kỳ khắt khe, chỉ ra cho tôi 3 điểm yếu về logic, metric, và giải thích vì sao rule-based code thông thường có thể giải quyết bài toán này tốt hơn là dùng AI."*
-
 
 ---
 
